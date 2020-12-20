@@ -12,6 +12,7 @@ uploads/*
 plugins/hello.php
 
 
+
 # ignore node dependency directories
 node_modules/
 
