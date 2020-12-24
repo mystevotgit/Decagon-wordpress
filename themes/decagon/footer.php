@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-lg-5 cp-col">
               <img
-                src="<?php echo get_theme_file_uri('/assets/img/logo-white.svg')?>"
+                src="<?php echo get_theme_file_uri('/assets/img/logo-white.svg') ?>"
                 class="logo"
                 alt="Decagon"
               />
@@ -18,7 +18,7 @@
                     href="https://web.facebook.com/decagonhq/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/Facebook.svg')?>" alt="Facebook"
+                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/Facebook.svg') ?>" alt="Facebook"
                   /></a>
                 </li>
                 <li>
@@ -26,7 +26,7 @@
                     href="https://twitter.com/decagonins/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/Twitter.svg')?>" alt="Twitter"
+                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/Twitter.svg') ?>" alt="Twitter"
                   /></a>
                 </li>
                 <li>
@@ -35,7 +35,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     ><img
-                      src="<?php echo get_theme_file_uri('/assets/img/Socmed/Instagram.svg')?>"
+                      src="<?php echo get_theme_file_uri('/assets/img/Socmed/Instagram.svg') ?>"
                       alt="Instagram"
                   /></a>
                 </li>
@@ -44,7 +44,7 @@
                     href="https://www.linkedin.com/school/decagon/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/LinkedIn.svg')?>" alt="LinkedIn"
+                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/LinkedIn.svg') ?>" alt="LinkedIn"
                   /></a>
                 </li>
               </ul>
@@ -56,16 +56,18 @@
             </div>
             <div class="col-lg-2 col-6 il-col">
               <h4 class="footer-heading">Information Links</h4>
-              <ul class="footer-links">
-                <li><a href="https://blog.decagonhq.com/">Blog</a></li>
-                <li>
-                  <a href="https://applications.decagonhq.com/"
-                    >For Developer</a
-                  >
-                </li>
-                <li><a href="privacy.php">Privacy Policy</a></li>
-                <li><a href="terms.php">Terms & Conditions</a></li>
-              </ul>
+
+              <?php
+                wp_nav_menu(
+                    [
+                        'theme_location' => 'footerMenu',
+                        'menu_class' => 'footer-links',
+                        'container' => false,
+                    ]
+                )
+
+             ?>
+
             </div>
             <div class="col-lg-2 col-6 l-col">
               <h4 class="footer-heading">Location</h4>
