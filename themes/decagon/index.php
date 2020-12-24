@@ -139,25 +139,45 @@
             </div>
           </div>
           <div class="leader--grid">
+          <?php 
+          $leaders = new WP_Query(array(
+            'posts_per_page' => 6,
+            'post_type' => 'portfolio'
+          ));
+
+          while($leaders->have_posts()) {
+              $leaders->the_post(); ?>
+              
             <div class="leader--card">
               <div class="leader--card__img">
                 <img
-                  src="<?php echo get_theme_file_uri('/assets/img/leadership/chika-nwobi.jpg') ?>"
+                  src="<?php the_field('Image') ?>"
                   alt="Chika Nwobi"
                   class="img-fluid"
                 />
               </div>
-              <h3 class="leader--card__name">Chika Nwobi</h3>
-              <p class="leader--card__position">Founder & CEO</p>
+              <h3 class="leader--card__name"><?php the_title(); ?></h3>
+              <p class="leader--card__position"><?php the_field('Portfolio'); ?></p>
               <ul class="leader--card__qualification">
-                <li>Board member: Unilever</li>
-                <li>Co Founder: Cheki.com.ng</li>
-                <li>Investor & Director: Jobberman, WhoGoHost</li>
-                <li>Partner: Rise Capital,</li>
+              <?php 
+                $ac1 = get_field('Achievement1');
+                if (strlen($ac1) > 0) {?><li><?php the_field('Achievement1'); ?></li><?php } ?>
+                <?php 
+                $ac2 = get_field('Achievement2');
+                if (strlen($ac2) > 0) {?><li><?php the_field('Achievement2'); ?></li><?php } ?>
+                <?php 
+                $ac3 = get_field('Achievement3');
+                if (strlen($ac3) > 0) {?><li><?php the_field('Achievement3'); ?></li><?php } ?>
+                <?php 
+                $ac4 = get_field('Achievement4');
+                if (strlen($ac4) > 0) {?><li><?php the_field('Achievement4'); ?></li><?php } ?>
+                <?php 
+                $ac5 = get_field('Achievement5');
+                if (strlen($ac5) > 0) {?><li><?php the_field('Achievement5'); ?></li><?php } ?>
               </ul>
               <div class="leader--card__linkedin">
                 <a
-                  href="https://www.linkedin.com/in/chikanwobi/"
+                  href="<?php the_field('Linkedin'); ?>"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -166,148 +186,9 @@
                 </a>
               </div>
             </div>
-            <div class="leader--card">
-              <div class="leader--card__img">
-                <img
-                  src="<?php echo get_theme_file_uri('/assets/img/leadership/laurens-kreuze.jpg') ?>"
-                  alt="Laurens Kreuze"
-                  class="img-fluid"
-                />
-              </div>
-              <h3 class="leader--card__name">Laurens Kreuze</h3>
-              <p class="leader--card__position">Board Member</p>
-              <ul class="leader--card__qualification">
-                <li>Founder AEBC Consulting</li>
-                <li>Partner KPMG Netherlands</li>
-                <li>22 years experience in Financial Audit</li>
-              </ul>
-              <div class="leader--card__linkedin">
-                <a
-                  href="https://www.linkedin.com/in/laurens-kreuze/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="<?php echo get_theme_file_uri('/assets/img/linkedin.svg') ?>" alt="LinkedIn" />
-                  <span>Find on LinkedIn &rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="leader--card">
-              <div class="leader--card__img">
-                <img
-                  src="<?php echo get_theme_file_uri('/assets/img/leadership/emilly-liggette.jpg') ?>"
-                  alt="Emilly Liggett"
-                  class="img-fluid"
-                />
-              </div>
-              <h3 class="leader--card__name">Emilly Liggett</h3>
-              <p class="leader--card__position">Board Member</p>
-              <ul class="leader--card__qualification">
-                <li>ex-McKinsey, Stanford University MBA.</li>
-                <li>
-                  Former CEO of Apexion Software and Capstone Turbines (NASDAQ
-                  listed).
-                </li>
-                <li>
-                  Board member of Engineering companies listed on US Stock
-                  Exchange.
-                </li>
-              </ul>
-              <div class="leader--card__linkedin">
-                <a
-                  href="https://www.linkedin.com/in/emilyliggett/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="<?php echo get_theme_file_uri('/assets/img/linkedin.svg') ?>" alt="LinkedIn" />
-                  <span>Find on LinkedIn &rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="leader--card mlc hide__leader--card">
-              <div class="leader--card__img">
-                <img
-                  src="<?php echo get_theme_file_uri('/assets/img/leadership/jody-ike.jpg') ?>"
-                  alt="Jody Ike"
-                  class="img-fluid"
-                />
-              </div>
-              <h3 class="leader--card__name">Jody Ike</h3>
-              <p class="leader--card__position">Board Member</p>
-              <ul class="leader--card__qualification">
-                <li>Africa Innovation Director, Diageo PLC, London</li>
-                <li>
-                  International MBA, Thunderbird School of Global Management,
-                  Arizona, USA
-                </li>
-                <li>26 years experience in Brand and Innovation</li>
-              </ul>
-              <div class="leader--card__linkedin">
-                <a
-                  href="https://www.linkedin.com/in/jody-samuels-ike-10445a2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="<?php echo get_theme_file_uri('/assets/img/linkedin.svg') ?>" alt="LinkedIn" />
-                  <span>Find on LinkedIn &rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="leader--card mlc hide__leader--card">
-              <div class="leader--card__img">
-                <img
-                  src="<?php echo get_theme_file_uri('/assets/img/leadership/nkem-alozie.png') ?>"
-                  alt="Nkem Alozie"
-                  class="img-fluid"
-                />
-              </div>
-              <h3 class="leader--card__name">Nkem Alozie</h3>
-              <p class="leader--card__position">Program Director</p>
-              <ul class="leader--card__qualification">
-                <li>18 years experience in IT consulting</li>
-                <li>Strategy and project management</li>
-                <li>
-                  IT project implementations for Bank of America | Marriott |
-                  General Motors | Sprint/Nextel | Aflac Insurance
-                </li>
-              </ul>
-              <div class="leader--card__linkedin">
-                <a
-                  href="https://www.linkedin.com/in/nkemakonam/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="<?php echo get_theme_file_uri('/assets/img/linkedin.svg') ?>" alt="LinkedIn" />
-                  <span>Find on LinkedIn &rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="leader--card mlc hide__leader--card">
-              <div class="leader--card__img">
-                <img
-                  src="<?php echo get_theme_file_uri('/assets/img/leadership/joseph-abah.jpg') ?>"
-                  alt="Joseph Abah"
-                  class="img-fluid"
-                />
-              </div>
-              <h3 class="leader--card__name">Joseph Abah</h3>
-              <p class="leader--card__position">Chief Technical Officer</p>
-              <ul class="leader--card__qualification">
-                <li>11 Years software engineering experience</li>
-                <li>Solutions Architect, Pebec report</li>
-              </ul>
-              <div class="leader--card__linkedin">
-                <a
-                  href="https://www.linkedin.com/in/abahjoseph/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="<?php echo get_theme_file_uri('/assets/img/linkedin.svg') ?>" alt="LinkedIn" />
-                  <span>Find on LinkedIn &rarr;</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <?php }
+           ?>
+            
           <button id="toggleLC">See all</button>
         </div>
       </div>
