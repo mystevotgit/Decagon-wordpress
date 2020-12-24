@@ -152,7 +152,7 @@
               <div class="leader--card__img">
                 <img
                   src="<?php the_field('Image') ?>"
-                  alt="Chika Nwobi"
+                  alt="<?php the_title(); ?>"
                   class="img-fluid"
                 />
               </div>
