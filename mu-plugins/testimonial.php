@@ -40,7 +40,7 @@ function jb_decagon_remove_default_ptag_from_testimonial_content($content)
     global $post;
     // Check for testimonial post type and remove paragraph
     if ($post->post_type === 'testimonial') {
-        return strip_tags($content);
+        $content = '&#8220;'.strip_tags($content).'&#8221;';
     }
 
     return $content;
