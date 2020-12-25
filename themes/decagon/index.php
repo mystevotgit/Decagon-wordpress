@@ -75,7 +75,7 @@
               </p>
               <p class="why__text">
                 <strong>More Female Talent:</strong> We have an ambitious goal
-                to be 50% female by 2025
+                to be 50% female by 2025.
               </p>
             </div>
             <div class="why__item">
@@ -87,7 +87,7 @@
               <p class="why__text">
                 Customized on-boarding - we can design a risk-free custom
                 onboarding sprint to get your team production ready in your
-                environment
+                environment.
               </p>
             </div>
           </div>
