@@ -14,3 +14,20 @@ function jb_decagon_scripts(){
 }
 
 add_action('wp_enqueue_scripts', 'jb_decagon_scripts');
+
+
+function strength_post_types() {
+    register_post_type('strength', array(
+        'public' => true,
+        'labels' => array(
+            'name' => 'Strengths',
+            'add_new_item' => 'Add New Strength',
+            'edit_item' => 'Edit Strength',
+            'all_items' => 'All Strengths',
+            'singular_name' => 'Strength'
+        ),
+        'menu_icon' => 'dashicons-rest-api'
+    ));
+}
+
+add_action('init', 'strength_post_types');
