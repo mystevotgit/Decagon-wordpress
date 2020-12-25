@@ -38,9 +38,9 @@ add_action('init', 'jb_decagon_testimonials_post_types');
 function jb_decagon_remove_default_ptag_from_testimonial_content($content)
 {
     global $post;
-    // Check for testimonial post type and remove
+    // Check for testimonial post type and remove paragraph
     if ($post->post_type === 'testimonial') {
-        $content = strip_tags($content);
+        return strip_tags($content);
     }
 
     return $content;

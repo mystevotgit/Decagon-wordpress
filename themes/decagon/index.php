@@ -130,7 +130,7 @@ while ($testimonials->have_posts()) {
             <div class="col-lg-1"></div>
             <div class="col-lg-6">
               <p class="testimonial-text">
-                <?php the_content(); ?>
+                <?php echo jb_decagon_remove_default_ptag_from_testimonial_content(get_the_content()); ?>
               </p>
               <div class="testimonial-author">
                 <p class="testimonial-author--name"><?php the_title()?></p>
