@@ -103,34 +103,47 @@
     </section>
 
     <section class="section-group">
+
+            <?php
+
+$testimonials = new WP_Query(
+    [
+        'posts_per_page' => 1,
+        'post_type' => 'testimonial',
+
+    ]
+);
+
+while ($testimonials->have_posts()) {
+    $testimonials->the_post();?>
+
       <div class="testimonial">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-5">
               <img
-                src="<?php echo get_theme_file_uri('/assets/img/team2 1.jpg') ?>"
-                alt="Jeff Jack"
+                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>"
+                alt="<?php the_title()?>"
                 class="img-fluid"
               />
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-6">
               <p class="testimonial-text">
-                “The software engineers from Decagon required very little to no
-                guidance on the complex projects we had for fortune 500
-                companies. This helps us save time and focus on other business
-                needs”
+                <?php the_content(); ?>
               </p>
               <div class="testimonial-author">
-                <p class="testimonial-author--name">Jeff Jack</p>
+                <p class="testimonial-author--name"><?php the_title()?></p>
                 <p class="testimonial-author--bio">
-                  Director of Front-End, Vertex
+                  <?php the_field('porfolio')?>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <?php }?>
+
       <div class="leadership">
         <div class="container">
           <div class="row">
@@ -139,45 +152,45 @@
             </div>
           </div>
           <div class="leader--grid">
-          <?php 
-          $leaders = new WP_Query(array(
-            'posts_per_page' => 6,
-            'post_type' => 'portfolio'
-          ));
+          <?php
+$leaders = new WP_Query(array(
+    'posts_per_page' => 6,
+    'post_type' => 'portfolio',
+));
 
-          while($leaders->have_posts()) {
-              $leaders->the_post(); ?>
-              
+while ($leaders->have_posts()) {
+    $leaders->the_post();?>
+
             <div class="leader--card">
               <div class="leader--card__img">
                 <img
-                  src="<?php the_field('Image') ?>"
-                  alt="<?php the_title(); ?>"
+                  src="<?php the_field('Image')?>"
+                  alt="<?php the_title();?>"
                   class="img-fluid"
                 />
               </div>
-              <h3 class="leader--card__name"><?php the_title(); ?></h3>
-              <p class="leader--card__position"><?php the_field('Portfolio'); ?></p>
+              <h3 class="leader--card__name"><?php the_title();?></h3>
+              <p class="leader--card__position"><?php the_field('Portfolio');?></p>
               <ul class="leader--card__qualification">
-              <?php 
-                $ac1 = get_field('Achievement1');
-                if (strlen($ac1) > 0) {?><li><?php the_field('Achievement1'); ?></li><?php } ?>
-                <?php 
-                $ac2 = get_field('Achievement2');
-                if (strlen($ac2) > 0) {?><li><?php the_field('Achievement2'); ?></li><?php } ?>
-                <?php 
-                $ac3 = get_field('Achievement3');
-                if (strlen($ac3) > 0) {?><li><?php the_field('Achievement3'); ?></li><?php } ?>
-                <?php 
-                $ac4 = get_field('Achievement4');
-                if (strlen($ac4) > 0) {?><li><?php the_field('Achievement4'); ?></li><?php } ?>
-                <?php 
-                $ac5 = get_field('Achievement5');
-                if (strlen($ac5) > 0) {?><li><?php the_field('Achievement5'); ?></li><?php } ?>
+              <?php
+$ac1 = get_field('Achievement1');
+    if (strlen($ac1) > 0) {?><li><?php the_field('Achievement1');?></li><?php }?>
+                <?php
+$ac2 = get_field('Achievement2');
+    if (strlen($ac2) > 0) {?><li><?php the_field('Achievement2');?></li><?php }?>
+                <?php
+$ac3 = get_field('Achievement3');
+    if (strlen($ac3) > 0) {?><li><?php the_field('Achievement3');?></li><?php }?>
+                <?php
+$ac4 = get_field('Achievement4');
+    if (strlen($ac4) > 0) {?><li><?php the_field('Achievement4');?></li><?php }?>
+                <?php
+$ac5 = get_field('Achievement5');
+    if (strlen($ac5) > 0) {?><li><?php the_field('Achievement5');?></li><?php }?>
               </ul>
               <div class="leader--card__linkedin">
                 <a
-                  href="<?php the_field('Linkedin'); ?>"
+                  href="<?php the_field('Linkedin');?>"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -187,8 +200,8 @@
               </div>
             </div>
           <?php }
-           ?>
-            
+?>
+
           <button id="toggleLC">See all</button>
         </div>
       </div>
