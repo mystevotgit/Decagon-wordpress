@@ -17,7 +17,7 @@ function jb_decagon_scripts()
 add_action('wp_enqueue_scripts', 'jb_decagon_scripts');
 
 
-function tj_strength_post_types() {
+function tj_strength_post_type() {
     register_post_type('strength', array(
         'public' => true,
         'labels' => array(
@@ -31,7 +31,7 @@ function tj_strength_post_types() {
     ));
 }
 
-add_action('init', 'tj_strength_post_types');
+add_action('init', 'tj_strength_post_type');
 
 function jb_decagon_nav_menu()
 {
