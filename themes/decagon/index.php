@@ -44,63 +44,177 @@
 
     <section class="section-why">
       <div class="container">
-        <h2>Why Decagon?</h2>
-        <div class="why-grid">
-          <div class="why-image">
-            <img src="<?php echo get_theme_file_uri('/assets/img/workspace.jpg') ?>" class="img-fluid" alt="" />
-          </div>
-          <div class="why-grid--list">
-            <div class="why__item">
-              <h4 class="why__heading">⭐ Engineering quality</h4>
-              <p class="why__text">
-                We select and recruit the top 0.5% of tech talent in the cities
-                we source from. We run our own Software Engineering Training
-                institute which is #1 in Africa.
-              </p>
-            </div>
-            <div class="why__item">
-              <h4 class="why__heading">🔌 Easy to work with</h4>
-              <p class="why__text">
-                Our engineers are all Native English speakers, they work on your
-                time-zone and will easily adopt your collaboration tools and
-                practices
-              </p>
-            </div>
-            <div class="why__item">
-              <h4 class="why__heading">✊🏽 Diverse talent base</h4>
-              <p class="why__text">
-                <strong>More Black Talent:</strong> Through our operations in
-                Africa we are able to give you access to high quality engineers
-                from under-represented backgrounds.
-              </p>
-              <p class="why__text">
-                <strong>More Female Talent:</strong> We have an ambitious goal
-                to be 50% female by 2025.
-              </p>
-            </div>
-            <div class="why__item">
-              <h4 class="why__heading">💰 Cost-effective scaling</h4>
-              <p class="why__text">
-                We help you access talent in regions where there is more
-                available supply of top-tier talent.
-              </p>
-              <p class="why__text">
-                Customized on-boarding - we can design a risk-free custom
-                onboarding sprint to get your team production ready in your
-                environment.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <?php 
+          $strength = new WP_Query(array(
+            'posts_per_page' => 1,
+            'post_type' => 'strength'
+          ));
 
-    <section class="section-countries">
-      <h4 class="content">
-        We currently serve companies in Austin, NYC, Berlin, London and Rome
-        from our operating bases in 🇳🇬 Lagos, 🇺🇸 Austin and 🇩🇪 Berlin.
-      </h4>
-    </section>
+          while($strength->have_posts()) {
+              $strength->the_post(); ?>
+            <h2><?php the_title() ?></h2>
+            <div class="why-grid">
+              <div class="why-image">
+                <img src="<?php the_field('image'); ?>" class="img-fluid" alt="workstation" />
+              </div>
+              <div class="why-grid--list">
+                <div class="why__item">
+                  <?php
+                  if(have_rows('strength1')) {
+                    while(have_rows('strength1')) { the_row(); 
+                    ?>
+                      <h4 class="why__heading"><?php the_sub_field('title'); ?></h4>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle1 = get_sub_field('subtitle1');
+                      if (strlen($subtitle1) > 0) {
+                        the_sub_field('subtitle1'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body1 = get_sub_field('body1');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('body1'); 
+                      }?>
+                      </p>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle2 = get_sub_field('subtitle2');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('subtitle2'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body2 = get_sub_field('body2');
+                      if (strlen($body2) > 0) {
+                        the_sub_field('body2'); 
+                      }?>
+                      </p>
+                  <?php 
+                  }}
+                  ?>
+                </div>
+                <div class="why__item">
+                <?php
+                  if(have_rows('strength2')) {
+                    while(have_rows('strength2')) { the_row(); 
+                    ?>
+                      <h4 class="why__heading"><?php the_sub_field('title'); ?></h4>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle1 = get_sub_field('subtitle1');
+                      if (strlen($subtitle1) > 0) {
+                        the_sub_field('subtitle1'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body1 = get_sub_field('body1');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('body1'); 
+                      }?>
+                      </p>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle2 = get_sub_field('subtitle2');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('subtitle2'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body2 = get_sub_field('body2');
+                      if (strlen($body2) > 0) {
+                        the_sub_field('body2'); 
+                      }?>
+                      </p>
+                  <?php 
+                  }}
+                  ?>
+                </div>
+                <div class="why__item">
+                <?php
+                  if(have_rows('strength3')) {
+                    while(have_rows('strength3')) { the_row(); 
+                    ?>
+                      <h4 class="why__heading"><?php the_sub_field('title'); ?></h4>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle1 = get_sub_field('subtitle1');
+                      if (strlen($subtitle1) > 0) {
+                        the_sub_field('subtitle1'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body1 = get_sub_field('body1');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('body1'); 
+                      }?>
+                      </p>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle2 = get_sub_field('subtitle2');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('subtitle2'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body2 = get_sub_field('body2');
+                      if (strlen($body2) > 0) {
+                        the_sub_field('body2'); 
+                      }?>
+                      </p>
+                  <?php 
+                  }}
+                  ?>
+                </div>
+                <div class="why__item">
+                <?php
+                  if(have_rows('strength4')) {
+                    while(have_rows('strength4')) { the_row(); 
+                    ?>
+                      <h4 class="why__heading"><?php the_sub_field('title'); ?></h4>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle1 = get_sub_field('subtitle1');
+                      if (strlen($subtitle1) > 0) {
+                        the_sub_field('subtitle1'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body1 = get_sub_field('body1');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('body1'); 
+                      }?>
+                      </p>
+                      <p class="why__text">
+                      <strong><?php 
+                      $subtitle2 = get_sub_field('subtitle2');
+                      if (strlen($body1) > 0) {
+                        the_sub_field('subtitle2'); 
+                      }?>
+                      </strong>
+                      <?php 
+                      $body2 = get_sub_field('body2');
+                      if (strlen($body2) > 0) {
+                        the_sub_field('body2'); 
+                      }?>
+                      </p>
+                  <?php 
+                  }}
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-countries">
+          <h4 class="content">
+            <?php the_content(); ?>
+          </h4>
+        </section>
+              <?php 
+              }
+        ?>
 
     <section class="section-group">
       <div class="testimonial">
@@ -142,7 +256,9 @@
           <?php 
           $leaders = new WP_Query(array(
             'posts_per_page' => 6,
-            'post_type' => 'portfolio'
+            'post_type' => 'portfolio',
+            'orderby' => 'mete_value_num',
+            'order' => 'DESC'
           ));
 
           while($leaders->have_posts()) {
@@ -151,33 +267,33 @@
             <div class="leader--card">
               <div class="leader--card__img">
                 <img
-                  src="<?php the_field('Image') ?>"
-                  alt="Chika Nwobi"
+                  src="<?php the_field('image') ?>"
+                  alt="<?php the_title(); ?>"
                   class="img-fluid"
                 />
               </div>
               <h3 class="leader--card__name"><?php the_title(); ?></h3>
-              <p class="leader--card__position"><?php the_field('Portfolio'); ?></p>
+              <p class="leader--card__position"><?php the_field('portfolio'); ?></p>
               <ul class="leader--card__qualification">
               <?php 
-                $ac1 = get_field('Achievement1');
-                if (strlen($ac1) > 0) {?><li><?php the_field('Achievement1'); ?></li><?php } ?>
+                $ac1 = get_field('achievement1');
+                if (strlen($ac1) > 0) {?><li><?php the_field('achievement1'); ?></li><?php } ?>
                 <?php 
-                $ac2 = get_field('Achievement2');
-                if (strlen($ac2) > 0) {?><li><?php the_field('Achievement2'); ?></li><?php } ?>
+                $ac2 = get_field('achievement2');
+                if (strlen($ac2) > 0) {?><li><?php the_field('achievement2'); ?></li><?php } ?>
                 <?php 
-                $ac3 = get_field('Achievement3');
-                if (strlen($ac3) > 0) {?><li><?php the_field('Achievement3'); ?></li><?php } ?>
+                $ac3 = get_field('achievement3');
+                if (strlen($ac3) > 0) {?><li><?php the_field('achievement3'); ?></li><?php } ?>
                 <?php 
-                $ac4 = get_field('Achievement4');
-                if (strlen($ac4) > 0) {?><li><?php the_field('Achievement4'); ?></li><?php } ?>
+                $ac4 = get_field('achievement4');
+                if (strlen($ac4) > 0) {?><li><?php the_field('achievement4'); ?></li><?php } ?>
                 <?php 
-                $ac5 = get_field('Achievement5');
-                if (strlen($ac5) > 0) {?><li><?php the_field('Achievement5'); ?></li><?php } ?>
+                $ac5 = get_field('achievement5');
+                if (strlen($ac5) > 0) {?><li><?php the_field('achievement5'); ?></li><?php } ?>
               </ul>
               <div class="leader--card__linkedin">
                 <a
-                  href="<?php the_field('Linkedin'); ?>"
+                  href="<?php the_field('linkedin'); ?>"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
