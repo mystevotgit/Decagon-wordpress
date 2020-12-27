@@ -73,3 +73,8 @@ function jb_decagon_custom_logo_setup()
     add_theme_support('custom-logo', $defaults);
 }
 add_action('after_setup_theme', 'jb_decagon_custom_logo_setup');
+
+
+// Add Thumbnail Support
+add_theme_support('post-thumbnails');
+set_post_thumbnail_size(1200, 900, true);
