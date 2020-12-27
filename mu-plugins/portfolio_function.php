@@ -1,6 +1,6 @@
 <?php
 
-function portfolio_post_types() {
+function tj_portfolio_post_type() {
     register_post_type('portfolio', array(
         'public' => true,
         'labels' => array(
@@ -14,4 +14,4 @@ function portfolio_post_types() {
     ));
 }
 
-add_action('init', 'portfolio_post_types');
+add_action('init', 'tj_portfolio_post_type');
