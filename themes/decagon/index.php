@@ -204,17 +204,16 @@ $body2 = get_sub_field('body2');
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
         <section class="section-countries">
           <h4 class="content">
             <?php the_content();?>
           </h4>
         </section>
-              <?php
-}
-?>
+              <?php }?>
+              
+          </div>
+        </section>
 
     <section class="section-group">
 
