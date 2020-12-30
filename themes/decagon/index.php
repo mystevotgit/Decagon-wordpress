@@ -329,17 +329,22 @@ $ac5 = get_field('achievement5');
         <div class="our-partners">
           <h5>Our Partnerships</h5>
           <div class="our-partners--images">
-            <img
-              src="<?php echo get_theme_file_uri('/assets/img/atlassian.svg') ?>"
-              alt="Atlassian"
-              class="img-fluid"
-            />
-            <img
-              src="<?php echo get_theme_file_uri('/assets/img/microsoft.svg') ?>"
-              alt="Microsoft"
-              class="img-fluid"
-            />
-            <img src="<?php echo get_theme_file_uri('/assets/img/github.svg') ?>" alt="Github" class="img-fluid" />
+          <?php 
+          $partners = new WP_Query(array(
+            'posts_per_page' => -1,
+            'post_type' => 'partner',
+            'orderby' => 'mete_value_num',
+            'order' => 'ASC',
+        ));
+
+        while ($partners->have_posts()) {
+          $partners->the_post(); ?>
+          <img
+          src="<?php the_post_thumbnail_url( 'full' ) ?>"
+          alt="<?php the_title(); ?>"
+          class="img-fluid"
+        />
+        <?php } ?>
           </div>
         </div>
       </div>
