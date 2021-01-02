@@ -33,6 +33,8 @@ function tj_strength_post_type() {
 
 add_action('init', 'tj_strength_post_type');
 
+
+
 function jb_decagon_nav_menu()
 {
     register_nav_menu('mainMenu', 'main Menu');
@@ -41,7 +43,7 @@ function jb_decagon_nav_menu()
 add_action('after_setup_theme', 'jb_decagon_nav_menu');
 
 
-
+//Add nav-link nav-item nav-btn to any link that points to /contact.php
 function jb_add_menu_link_class($atts, $item, $args)
 {
 
@@ -58,6 +60,18 @@ function jb_add_menu_link_class($atts, $item, $args)
     return $atts;
 }
 add_filter('nav_menu_link_attributes', 'jb_add_menu_link_class', 1, 3);
+
+
+// Add custom class to widget navigation menus
+function jb_add_footer_link_class($nav_menu_args)
+{
+    $nav_menu_args['theme_location'] = 'footerMenu';
+    $nav_menu_args['menu_class'] = 'footer-links';
+
+    return $nav_menu_args;
+}
+add_filter('widget_nav_menu_args', 'jb_add_footer_link_class');
+
 
 
 function jb_decagon_custom_logo_setup()
@@ -78,3 +92,86 @@ add_action('after_setup_theme', 'jb_decagon_custom_logo_setup');
 // Add Thumbnail Support
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(1200, 900, true);
+
+
+function jb_decagon_links_widget()
+{
+
+    register_sidebar(array(
+        'name' => 'Footer Links widget Area',
+        'id' => 'footer_widget_1',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="footer-heading">',
+        'after_title' => '</h4>',
+    ));
+
+}
+add_action('widgets_init', 'jb_decagon_links_widget');
+
+
+function jb_decagon_location_widget()
+{
+
+    register_sidebar(array(
+        'name' => 'Footer Location widget Area',
+        'id' => 'footer_widget_2',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="footer-heading">',
+        'after_title' => '</h4>',
+    ));
+
+}
+add_action('widgets_init', 'jb_decagon_location_widget');
+
+
+function jb_decagon_contact_widget()
+{
+
+    register_sidebar(array(
+        'name' => 'Footer contact widget Area',
+        'id' => 'footer_widget_3',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="footer-heading">',
+        'after_title' => '</h4>',
+    ));
+
+}
+add_action('widgets_init', 'jb_decagon_contact_widget');
+
+
+
+function jb_decagon_social_widget()
+{
+
+    register_sidebar(array(
+        'name' => 'Footer social widget Area',
+        'id' => 'social_widget',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h4 class="footer-heading">',
+        'after_title' => '</h4>',
+    ));
+
+}
+add_action('widgets_init', 'jb_decagon_social_widget');
+
+
+function filter_widget_content($widget)
+{
+    $content = '';
+    ob_start();
+    dynamic_sidebar($widget);
+    $content = ob_get_clean();
+    return $content;
+}
+
+
+
+
+
+
+
+

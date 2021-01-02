@@ -7,88 +7,66 @@
         <section class="footer-section">
           <div class="row">
             <div class="col-lg-5 cp-col">
-              <img
-                src="<?php echo get_theme_file_uri('/assets/img/logo-white.svg') ?>"
-                class="logo"
-                alt="Decagon"
-              />
+              <a class="navbar-brand" href="<?php echo site_url(); ?>">
+               
+              <?php
+
+                $custom_logo_id = get_theme_mod('custom_logo');
+                $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+                if (has_custom_logo()) {
+                echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
+                } else {
+                echo '<h1>' . get_bloginfo('name') . '</h1>';
+                }
+            ?>
+              </a>
+
+
               <ul class="footer-social">
-                <li>
-                  <a
-                    href="https://web.facebook.com/decagonhq/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/Facebook.svg') ?>" alt="Facebook"
-                  /></a>
-                </li>
-                <li>
-                  <a
-                    href="https://twitter.com/decagonins/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/Twitter.svg') ?>" alt="Twitter"
-                  /></a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/decagonhq/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><img
-                      src="<?php echo get_theme_file_uri('/assets/img/Socmed/Instagram.svg') ?>"
-                      alt="Instagram"
-                  /></a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/school/decagon/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><img src="<?php echo get_theme_file_uri('/assets/img/Socmed/LinkedIn.svg') ?>" alt="LinkedIn"
-                  /></a>
-                </li>
+                <?php if (is_active_sidebar('social_widget')): ?>
+                <?php 
+                  $patterns = array();
+                  $patterns[0] = '/<div[^>]*>/';
+                  $patterns[1] = '/<\/div>/';
+                  $replacements = array();
+                  $replacements[2] = '';
+                  $replacements[1] = '';
+
+                  echo preg_replace($patterns, $replacements,filter_widget_content('social_widget')) ;?>
+                 <?php endif;?>
               </ul>
+
+
               <p class="copyright-text">
                 All rights reserved. ©
                 <?php echo date("Y"); ?>
                 <span>Decagon</span>
               </p>
+
+
             </div>
+
+
             <div class="col-lg-2 col-6 il-col">
-              <h4 class="footer-heading">Information Links</h4>
+                <?php if (is_active_sidebar('footer_widget_1')): ?>
+		        <?php dynamic_sidebar('footer_widget_1');?>
+                 <?php endif;?>
+             </div>
 
-              <?php
-                wp_nav_menu(
-                    [
-                        'theme_location' => 'footerMenu',
-                        'menu_class' => 'footer-links',
-                        'container' => false,
-                    ]
-                )
 
-             ?>
-
-            </div>
             <div class="col-lg-2 col-6 l-col">
-              <h4 class="footer-heading">Location</h4>
-              <ul class="footer-links">
-                <li>Lagos, Nigeria</li>
-                <li>Austin, Texas</li>
-                <li>Berlin, Germany</li>
-              </ul>
+              <?php if (is_active_sidebar('footer_widget_2')): ?>
+		        <?php dynamic_sidebar('footer_widget_2');?>
+                 <?php endif;?>
             </div>
+
+
             <div class="col-lg-3 cu-col">
-              <h4 class="footer-heading">Contact Us</h4>
-              <ul class="footer-links">
-                <!-- <li><img src="./assets/img/Iconly/Bulk/Call.svg" alt="Call"><a href="tel:+1-888-240-1467">P: 888-240-1467</a></li> -->
-                <li>
-                  <img
-                    src="<?php echo get_theme_file_uri('/assets/img/Iconly/Bulk/Message.svg') ?>"
-                    alt="Mail"
-                  /><a href="mailto:info@decagonhq.com">info@decagonhq.com</a>
-                </li>
-              </ul>
+                <?php if (is_active_sidebar('footer_widget_3')): ?>
+		        <?php dynamic_sidebar('footer_widget_3');?>
+                 <?php endif;?>
             </div>
+            
           </div>
         </section>
       </div>
