@@ -78,3 +78,29 @@ add_action('after_setup_theme', 'jb_decagon_custom_logo_setup');
 // Add Thumbnail Support
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(1200, 900, true);
+
+
+function tj_decagon_partners_post_type() {
+    register_post_type('partner', array(
+        'public' => true,
+        'show_in_menu' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'partners'),
+        'show_in_rest' => true,
+        'labels' => array(
+            'name' => 'Partners', 
+            'singular_name' => 'Partner',
+            'add_new_item' => 'Add New Partners',
+            'edit_item' => 'Edit Partner',
+            'all_items' => 'All Partners',
+            'featured_image'        => 'Partner Image', 
+            'set_featured_image'    => 'Set image', 
+            'remove_featured_image' => 'Remove image', 
+            'use_featured_image'    => 'Use as partner image', 
+        ),
+        'supports' => array('title','editor','thumbnail', 'custom-fields'),
+        'menu_icon'   => 'dashicons-share-alt',
+    ));
+}
+
+add_action( 'init', 'tj_decagon_partners_post_type' );
