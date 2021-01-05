@@ -195,3 +195,29 @@ function tj_decagon_partners_post_type() {
 }
 
 add_action( 'init', 'tj_decagon_partners_post_type' );
+
+
+function tj_decagon_media_news_post_type() {
+    register_post_type('media news', array(
+        'public' => true,
+        'show_in_menu' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'media news'),
+        'show_in_rest' => true,
+        'labels' => array(
+            'name' => 'Media News', 
+            'singular_name' => 'Media News',
+            'add_new_item' => 'Add New Media News',
+            'edit_item' => 'Edit Media News',
+            'all_items' => 'All Media News',
+            'featured_image'        => 'Media Image', 
+            'set_featured_image'    => 'Set image', 
+            'remove_featured_image' => 'Remove image', 
+            'use_featured_image'    => 'Use as Media image', 
+        ),
+        'supports' => array('title','editor','thumbnail', 'custom-fields'),
+        'menu_icon'   => 'dashicons-video-alt',
+    ));
+}
+
+add_action( 'init', 'tj_decagon_media_news_post_type' );
