@@ -10,7 +10,7 @@
 
   <body>
     <!--Header Section-->
-    <header class="<?php echo is_home() ? 'home-header' : 'other-header' ?>">
+    <header class="<?php echo is_home() ? 'home-header' : 'other-header' ?> ">
       <!-- Navbar Section-->
       <section class="navigation" id="mynav">
         <div class="container">
