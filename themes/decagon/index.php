@@ -358,56 +358,33 @@ $ac5 = get_field('achievement5');
           <a href="https://blog.decagonhq.com/">Visit Blog</a>
         </div>
         <div class="media-grid">
-          <div
-            class="news-card"
-            style="background-image: url(<?php echo get_theme_file_uri('/assets/img/FEB_6268\ 1.jpg') ?>)"
-          >
-            <a
-              href="https://techpoint.africa/2020/02/04/indeed-visits-decagon-institute/"
-              class="news-card__overlay"
-            ></a>
-            <div class="news-card__details">
-              <h4>Indeed Visits DecagonHQ to meet remote team</h4>
-              <a
-                href="https://techpoint.africa/2020/02/04/indeed-visits-decagon-institute/"
-                >Read More</a
-              >
-            </div>
-          </div>
+        <?php 
+          $news = new WP_Query(array(
+            'posts_per_page' => 3,
+            'post_type' => 'media news',
+            'orderby' => 'mete_value_num',
+            'order' => 'ASC',
+        ));
 
+        while ($news->have_posts()) {
+          $news->the_post(); ?>
           <div
             class="news-card"
-            style="background-image: url(<?php echo get_theme_file_uri('/assets/img/obaseki\ 1.jpg') ?>)"
+            style="background-image: url(<?php the_post_thumbnail_url( 'full' ) ?>)"
           >
             <a
-              href="http://www.edostate.gov.ng/obaseki-set-to-launch-edo-tech-park-partners-decagon-to-train-15000-software-engineers/"
+              href="<?php the_field('news'); ?>"
               class="news-card__overlay"
             ></a>
             <div class="news-card__details">
-              <h4>Decagon to train 15,000 people in Edo state</h4>
+              <h4><?php the_title(); ?></h4>
               <a
-                href="http://www.edostate.gov.ng/obaseki-set-to-launch-edo-tech-park-partners-decagon-to-train-15000-software-engineers/"
+                href="<?php the_field('news'); ?>"
                 >Read More</a
               >
             </div>
           </div>
-
-          <div
-            class="news-card"
-            style="background-image: url(<?php echo get_theme_file_uri('/assets/img/Decagon-02-2\ 1.jpg') ?>)"
-          >
-            <a
-              href="https://tribuneonlineng.com/sterling-bank-decagon-train-5000-nigerian-graduates-on-software-engineering/"
-              class="news-card__overlay"
-            ></a>
-            <div class="news-card__details">
-              <h4>Sterling Bank signs deal to finance Decadev program</h4>
-              <a
-                href="https://tribuneonlineng.com/sterling-bank-decagon-train-5000-nigerian-graduates-on-software-engineering/"
-                >Read More</a
-              >
-            </div>
-          </div>
+        <?php } ?>
         </div>
       </div>
     </section>
