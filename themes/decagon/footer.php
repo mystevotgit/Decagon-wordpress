@@ -1,9 +1,13 @@
  <footer class="footer">
       <div class="container">
+
+        <?php if(is_home()): ?>
         <section class="build-team">
           <h3>Build a dependable remote team.</h3>
           <a href="contact.php" class="btn footer-btn">Build your team</a>
         </section>
+          <?php endif; ?>
+          
         <section class="footer-section">
           <div class="row">
             <div class="col-lg-5 cp-col">
