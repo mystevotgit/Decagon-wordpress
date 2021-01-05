@@ -159,6 +159,23 @@ function jb_decagon_social_widget()
 add_action('widgets_init', 'jb_decagon_social_widget');
 
 
+function jb_decagon_sidebar_widget()
+{
+
+    register_sidebar(array(
+        'name' => 'Page sidebar widget Area',
+        'id' => 'page_sidebar',
+        'before_widget' => '<div class="heading mb_small">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="footer-heading">',
+        'after_title' => '</h4>',
+    ));
+
+}
+add_action('widgets_init', 'jb_decagon_sidebar_widget');
+
+
+
 // filter out the default widgetText class from text widget
 function filter_widget_content($widget)
 {
