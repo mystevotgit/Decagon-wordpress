@@ -10,7 +10,17 @@
 
   <body>
     <!--Header Section-->
-    <header class="<?php echo is_home() ? 'home-header' : 'other-header' ?> ">
+    <?php
+    
+        if(is_home() && !is_page_template('contact-page.php')){
+          $class = 'home-header';
+        }elseif (is_page_template('contact-page.php')) {
+          $class = 'contact-header';
+        }else{
+          $class = 'other-header';
+        }
+    ?>
+    <header class="<?php echo $class ?> ">
       <!-- Navbar Section-->
       <section class="navigation" id="mynav">
         <div class="container">
