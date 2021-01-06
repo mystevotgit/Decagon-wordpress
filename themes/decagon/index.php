@@ -11,7 +11,7 @@
             infrastructure<br />
             to help you scale quickly and cost effectively.
           </h3>
-          <a href="contact.php" class="btn heading-btn">Build your team</a>
+          <a href="<?php echo site_url('/contact') ?>" class="btn heading-btn">Build your team</a>
         </div>
       </div>
     </header>
