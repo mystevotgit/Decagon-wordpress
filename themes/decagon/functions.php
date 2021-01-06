@@ -238,3 +238,29 @@ function tj_decagon_media_news_post_type() {
 }
 
 add_action( 'init', 'tj_decagon_media_news_post_type' );
+
+
+function tj_decagon_customer_post_type() {
+    register_post_type('customer', array(
+        'public' => true,
+        'show_in_menu' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'customers'),
+        'show_in_rest' => true,
+        'labels' => array(
+            'name' => 'Customers', 
+            'singular_name' => 'Customer',
+            'add_new_item' => 'Add New Customer',
+            'edit_item' => 'Edit Customer',
+            'all_items' => 'All Customers',
+            'featured_image'        => 'Customer Image', 
+            'set_featured_image'    => 'Set image', 
+            'remove_featured_image' => 'Remove image', 
+            'use_featured_image'    => 'Use as Customer image', 
+        ),
+        'supports' => array('title','editor','thumbnail', 'custom-fields'),
+        'menu_icon'   => 'dashicons-screenoptions',
+    ));
+}
+
+add_action( 'init', 'tj_decagon_customer_post_type' );
