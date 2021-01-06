@@ -24,18 +24,21 @@
           </div>
           <div class="col-lg-8">
             <div class="work-with">
-              <img src="<?php echo get_theme_file_uri('/assets/img/partners/merck.svg') ?>" alt="Merck" />
-              <img src="<?php echo get_theme_file_uri('/assets/img/partners/nike.svg') ?>" alt="Nike" />
-              <img
-                src="<?php echo get_theme_file_uri('/assets/img/partners/mastercard.svg') ?>"
-                alt="Mastercard"
-              />
-              <img src="<?php echo get_theme_file_uri('/assets/img/partners/vertex.svg') ?>" alt="Vertex" />
-              <img
-                src="<?php echo get_theme_file_uri('/assets/img/partners/budweiser.svg') ?>"
-                alt="Budweiser"
-              />
-              <img src="<?php echo get_theme_file_uri('/assets/img/partners/nokia.svg') ?>" alt="Nokia" />
+            <?php 
+            $customers = new WP_Query(array(
+            'posts_per_page' => -1,
+            'post_type' => 'customer',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
+        ));
+
+        while ($customers->have_posts()) {
+          $customers->the_post(); ?>
+          <img
+          src="<?php the_post_thumbnail_url( 'full' ) ?>"
+          alt="<?php the_title(); ?>"
+        />
+        <?php } ?>
             </div>
           </div>
         </div>
@@ -271,7 +274,7 @@ while ($testimonials->have_posts()) {
 $leaders = new WP_Query(array(
     'posts_per_page' => 6,
     'post_type' => 'portfolio',
-    'orderby' => 'mete_value_num',
+    'orderby' => 'meta_value_num',
     'order' => 'DESC',
 ));
 
@@ -333,7 +336,7 @@ $ac5 = get_field('achievement5');
           $partners = new WP_Query(array(
             'posts_per_page' => -1,
             'post_type' => 'partner',
-            'orderby' => 'mete_value_num',
+            'orderby' => 'meta_value_num',
             'order' => 'ASC',
         ));
 
@@ -362,7 +365,7 @@ $ac5 = get_field('achievement5');
           $news = new WP_Query(array(
             'posts_per_page' => 3,
             'post_type' => 'media news',
-            'orderby' => 'mete_value_num',
+            'orderby' => 'meta_value_num',
             'order' => 'ASC',
         ));
 
