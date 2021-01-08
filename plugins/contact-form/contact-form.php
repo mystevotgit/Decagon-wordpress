@@ -72,20 +72,20 @@ $content =
                     class="form-control"
                     id="name"
                     placeholder="Enter first name here"
-                    name="First Name"
+                    name="client_name"
                     required
                   />
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-item">
-                  <label for="role" class="form-label">Your role is</label>
+                  <label for="designation" class="form-label">Your role is</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="Designation"
+                    id="designation"
                     placeholder="e.g CTO"
-                    name="Designation"
+                    name="designation"
                     required
                   />
                 </div>
@@ -98,9 +98,9 @@ $content =
                   <input
                     type="text"
                     class="form-control"
-                    id="Company"
+                    id="company"
                     placeholder="e.g Google"
-                    name="Company"
+                    name="company"
                     required
                   />
                 </div>
@@ -120,7 +120,7 @@ $content =
                     >
                     <select
                       id="country"
-                      name="Country"
+                      name="country"
                       class="form-control"
                       required
                     >
@@ -465,7 +465,7 @@ $content =
                     >
                     <select
                       id="engineering"
-                      name="No of Employees"
+                      name="needs"
                       class="form-control"
                       required
                     >
@@ -493,7 +493,7 @@ $content =
                       class="form-control"
                       id="email"
                       placeholder="Enter email address here"
-                      name="Email"
+                      name="email"
                       required
                     />
                   </div>
@@ -504,6 +504,7 @@ $content =
                     type="submit"
                     id="formsubmit"
                     type="submit"
+                    name="jb_contact_plugin_btn"
                   >
                     Submit
                   </button>
