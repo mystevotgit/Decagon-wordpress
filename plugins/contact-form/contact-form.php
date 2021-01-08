@@ -21,10 +21,11 @@ require_once __DIR__ . '/functions.php';
 
 
 function jb_contact_form(){
-$content = 
+$content .= 
 '<section class="contact-section">
-        <div class="container">
+        <div class="container">'.jb_contact_plugin_notices().'
           <h2>Build your <span>dependable</span> remote engineering team.</h2>
+          
           <p>
             Provide your details below and we will follow up in less than 24Hrs.
           </p>

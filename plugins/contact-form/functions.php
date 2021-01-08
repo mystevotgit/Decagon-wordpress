@@ -26,11 +26,6 @@ register_activation_hook(__DIR__ . '/contact-form.php', 'jb_contact_plugin_creat
 
 function jb_process_contact_plugin_form()
 {
-
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-
     global $wpdb;
     $table_name = 'wp_contact_data';
 
@@ -45,7 +40,6 @@ function jb_process_contact_plugin_form()
         if (!$name || !$designation || !$company || !$country || !$needs) {
             $_SESSION['jb_contact_plugin_error'] = 'Please all fields are required';
         }
-        ;
 
         if (!is_email($email)) {
             $_SESSION['jb_contact_plugin_error'] = 'Please Enter a Valid Email address';
@@ -62,12 +56,30 @@ function jb_process_contact_plugin_form()
         ];
 
         $format = ['%s', '%s', '%s', '%s', '%s', '%s'];
+        if (!isset($_SESSION['jb_contact_plugin_error'])) {
 
-        if($wpdb->insert($table_name, $data, $format)){
-            $_SESSION['jb_contact_plugin_success'] = 'We have Received your Message. Thank You';
+            if ($wpdb->insert($table_name, $data, $format)) {
+                $_SESSION['jb_contact_plugin_success'] = 'We have Received your Message. Thank You';
+            }
         }
-
     }
 }
 
 add_action('wp_head', 'jb_process_contact_plugin_form');
+
+function jb_contact_plugin_notices()
+{
+    if (isset($_SESSION['jb_contact_plugin_error'])) {
+        $notice = "<p class='alert alert-danger' style='color:#000'>" . $_SESSION['jb_contact_plugin_error'] . "</p>";
+        unset($_SESSION['jb_contact_plugin_error']);
+        return $notice;
+        
+    }
+
+    if ($_SESSION['jb_contact_plugin_success']) {
+        $notice = "<p class='alert alert-success' style='color:green'>" . $_SESSION['jb_contact_plugin_success'] . "</p>";
+        unset($_SESSION['jb_contact_plugin_success']);
+        return $notice;
+    }
+
+}
