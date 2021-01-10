@@ -239,3 +239,27 @@ function tj_decagon_customer_post_type() {
 }
 
 add_action( 'init', 'tj_decagon_customer_post_type' );
+
+
+function tj_decagon_engineers_widget(){
+
+    register_sidebar(array(
+        'name' => 'Engineers widget Title',
+        'id' => 'engineers_widget_title',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
+    ));
+
+    register_sidebar(array(
+        'name' => 'Engineers widget Area',
+        'id' => 'engineers_widget',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h6>',
+        'after_title' => '</h6>'
+    ));
+
+}
+add_action('widgets_init', 'tj_decagon_engineers_widget');
