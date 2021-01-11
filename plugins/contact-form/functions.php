@@ -1,5 +1,14 @@
 <?php
 
+function jb_contact_form_dashboard_css(){
+    wp_enqueue_style('main', plugin_dir_url(__FILE__).'assets/css/main.css', null, '1.0', false);
+    
+}
+
+add_action('admin_enqueue_scripts', 'jb_contact_form_dashboard_css');
+
+
+
 function jb_contact_plugin_create_db()
 {
     global $wpdb;
@@ -82,4 +91,15 @@ function jb_contact_plugin_notices()
         return $notice;
     }
 
+}
+
+
+function jb_add_contact_plugin_menu(){
+    add_menu_page('decagon contact form', 'Decagon Contact','manage_options','decagon-contact-form', 'jb_contact_main_menu','dashicons-email-alt',72);
+}
+
+add_action('admin_menu', 'jb_add_contact_plugin_menu');
+
+function jb_contact_main_menu(){
+    require_once 'form-admin.php';
 }
