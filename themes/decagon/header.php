@@ -11,18 +11,21 @@
   <body>
     <!--Header Section-->
     <?php
+
+    $home_banner = get_theme_mod('decagon_banner_background_image');
     
         if(is_home() && !is_page_template('contact-page.php')){
           $class = 'home-header';
+          $style = "background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(".$home_banner.")";
         }elseif (is_page_template('contact-page.php')) {
           $class = 'contact-header';
         }else{
           $class = 'other-header';
         }
     ?>
-    <header class="<?php echo $class ?> ">
+    <header class="<?php echo $class ?> " style="<?php echo $style; ?>">
       <!-- Navbar Section-->
-      <section class="navigation" id="mynav">
+      <section class="navigation" id="mynav" >
         <div class="container">
           <nav
             class="navbar sticky-top navbar-expand-lg navbar-dark bg-transparent">
