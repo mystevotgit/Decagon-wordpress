@@ -49,7 +49,7 @@ function jb_add_menu_link_class($atts, $item, $args)
 
     if ($args->theme_location == 'mainMenu') {
 
-        if ($atts['href'] == site_url('/contact.php')) {
+        if ($atts['href'] == site_url('/contact')) {
             $atts['class'] = 'nav-link nav-item nav-btn';
 
         } else {
