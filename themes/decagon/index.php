@@ -369,7 +369,7 @@ $ac5 = get_field('achievement5');
         <?php 
           $news = new WP_Query(array(
             'posts_per_page' => 3,
-            'post_type' => 'media news',
+            'post_type' => 'post',
             'orderby' => 'meta_value_num',
             'order' => 'ASC',
         ));
@@ -381,13 +381,13 @@ $ac5 = get_field('achievement5');
             style="background-image: url(<?php the_post_thumbnail_url( 'full' ) ?>)"
           >
             <a
-              href="<?php the_field('news'); ?>"
+              href="<?php get_field('news') ? the_field('news'): the_permalink(); ?>"
               class="news-card__overlay"
             ></a>
             <div class="news-card__details">
               <h4><?php the_title(); ?></h4>
               <a
-                href="<?php the_field('news'); ?>"
+                href="<?php get_field('news') ? the_field('news'): the_permalink(); ?>"
                 >Read More</a
               >
             </div>
