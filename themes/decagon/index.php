@@ -3,15 +3,20 @@
       <div class="container">
         <div class="home-header__text-box">
           <h1 class="heading-primary">
-            Build faster with <span>vetted</span> remote software engineering
-            talent.
+            <?php
+              echo get_option('decagon_banner_text1');
+            ?>
           </h1>
           <h3 class="heading-secondary">
-            Recruiting, training, ongoing HR management and work
-            infrastructure<br />
-            to help you scale quickly and cost effectively.
+            <?php
+              echo get_option('decagon_banner_text2');
+            ?>
           </h3>
-          <a href="<?php echo site_url('/contact') ?>" class="btn heading-btn">Build your team</a>
+            <?php if(get_option('decagon_banner_button')){
+               $slug = get_option('decagon_banner_button_slug')
+            ?>
+          <a href="<?php echo site_url('/'.$slug.'') ?>" class="btn heading-btn"><?php echo get_option('decagon_banner_button') ?></a>
+          <?php }?>
         </div>
       </div>
     </header>

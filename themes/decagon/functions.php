@@ -16,8 +16,8 @@ function jb_decagon_scripts()
 
 add_action('wp_enqueue_scripts', 'jb_decagon_scripts');
 
-
-function tj_strength_post_type() {
+function tj_strength_post_type()
+{
     register_post_type('strength', array(
         'public' => true,
         'labels' => array(
@@ -25,15 +25,13 @@ function tj_strength_post_type() {
             'add_new_item' => 'Add New Strength',
             'edit_item' => 'Edit Strength',
             'all_items' => 'All Strengths',
-            'singular_name' => 'Strength'
+            'singular_name' => 'Strength',
         ),
-        'menu_icon' => 'dashicons-rest-api'
+        'menu_icon' => 'dashicons-rest-api',
     ));
 }
 
 add_action('init', 'tj_strength_post_type');
-
-
 
 function jb_decagon_nav_menu()
 {
@@ -41,7 +39,6 @@ function jb_decagon_nav_menu()
     register_nav_menu('footerMenu', 'footer Menu');
 }
 add_action('after_setup_theme', 'jb_decagon_nav_menu');
-
 
 //Add nav-link nav-item nav-btn to any link that points to /contact.php
 function jb_add_menu_link_class($atts, $item, $args)
@@ -61,7 +58,6 @@ function jb_add_menu_link_class($atts, $item, $args)
 }
 add_filter('nav_menu_link_attributes', 'jb_add_menu_link_class', 1, 3);
 
-
 // Add custom class to widget navigation menus
 function jb_add_footer_link_class($nav_menu_args)
 {
@@ -71,8 +67,6 @@ function jb_add_footer_link_class($nav_menu_args)
     return $nav_menu_args;
 }
 add_filter('widget_nav_menu_args', 'jb_add_footer_link_class');
-
-
 
 function jb_decagon_custom_logo_setup()
 {
@@ -88,11 +82,9 @@ function jb_decagon_custom_logo_setup()
 }
 add_action('after_setup_theme', 'jb_decagon_custom_logo_setup');
 
-
 // Add Thumbnail Support
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(1200, 900, true);
-
 
 function jb_decagon_links_widget()
 {
@@ -109,7 +101,6 @@ function jb_decagon_links_widget()
 }
 add_action('widgets_init', 'jb_decagon_links_widget');
 
-
 function jb_decagon_location_widget()
 {
 
@@ -124,7 +115,6 @@ function jb_decagon_location_widget()
 
 }
 add_action('widgets_init', 'jb_decagon_location_widget');
-
 
 function jb_decagon_contact_widget()
 {
@@ -141,8 +131,6 @@ function jb_decagon_contact_widget()
 }
 add_action('widgets_init', 'jb_decagon_contact_widget');
 
-
-
 function jb_decagon_social_widget()
 {
 
@@ -157,7 +145,6 @@ function jb_decagon_social_widget()
 
 }
 add_action('widgets_init', 'jb_decagon_social_widget');
-
 
 function jb_decagon_sidebar_widget()
 {
@@ -174,8 +161,6 @@ function jb_decagon_sidebar_widget()
 }
 add_action('widgets_init', 'jb_decagon_sidebar_widget');
 
-
-
 // filter out the default widgetText class from text widget
 function filter_widget_content($widget)
 {
@@ -186,9 +171,8 @@ function filter_widget_content($widget)
     return $content;
 }
 
-
-
-function tj_decagon_partners_post_type() {
+function tj_decagon_partners_post_type()
+{
     register_post_type('partner', array(
         'public' => true,
         'show_in_menu' => true,
@@ -196,26 +180,51 @@ function tj_decagon_partners_post_type() {
         'rewrite' => array('slug' => 'partners'),
         'show_in_rest' => true,
         'labels' => array(
-            'name' => 'Partners', 
+            'name' => 'Partners',
             'singular_name' => 'Partner',
             'add_new_item' => 'Add New Partners',
             'edit_item' => 'Edit Partner',
             'all_items' => 'All Partners',
-            'featured_image'        => 'Partner Image', 
-            'set_featured_image'    => 'Set image', 
-            'remove_featured_image' => 'Remove image', 
-            'use_featured_image'    => 'Use as partner image', 
+            'featured_image' => 'Partner Image',
+            'set_featured_image' => 'Set image',
+            'remove_featured_image' => 'Remove image',
+            'use_featured_image' => 'Use as partner image',
         ),
-        'supports' => array('title','editor','thumbnail', 'custom-fields'),
-        'menu_icon'   => 'dashicons-share-alt',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'menu_icon' => 'dashicons-share-alt',
     ));
 }
 
-add_action( 'init', 'tj_decagon_partners_post_type' );
+add_action('init', 'tj_decagon_partners_post_type');
 
+function tj_decagon_media_news_post_type()
+{
+    register_post_type('media news', array(
+        'public' => true,
+        'show_in_menu' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'media news'),
+        'show_in_rest' => true,
+        'labels' => array(
+            'name' => 'Media News',
+            'singular_name' => 'Media News',
+            'add_new_item' => 'Add New Media News',
+            'edit_item' => 'Edit Media News',
+            'all_items' => 'All Media News',
+            'featured_image' => 'Media Image',
+            'set_featured_image' => 'Set image',
+            'remove_featured_image' => 'Remove image',
+            'use_featured_image' => 'Use as Media image',
+        ),
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'menu_icon' => 'dashicons-video-alt',
+    ));
+}
 
+add_action('init', 'tj_decagon_media_news_post_type');
 
-function tj_decagon_customer_post_type() {
+function tj_decagon_customer_post_type()
+{
     register_post_type('customer', array(
         'public' => true,
         'show_in_menu' => true,
@@ -223,43 +232,25 @@ function tj_decagon_customer_post_type() {
         'rewrite' => array('slug' => 'customers'),
         'show_in_rest' => true,
         'labels' => array(
-            'name' => 'Customers', 
+            'name' => 'Customers',
             'singular_name' => 'Customer',
             'add_new_item' => 'Add New Customer',
             'edit_item' => 'Edit Customer',
             'all_items' => 'All Customers',
-            'featured_image'        => 'Customer Image', 
-            'set_featured_image'    => 'Set image', 
-            'remove_featured_image' => 'Remove image', 
-            'use_featured_image'    => 'Use as Customer image', 
+            'featured_image' => 'Customer Image',
+            'set_featured_image' => 'Set image',
+            'remove_featured_image' => 'Remove image',
+            'use_featured_image' => 'Use as Customer image',
         ),
-        'supports' => array('title','editor','thumbnail', 'custom-fields'),
-        'menu_icon'   => 'dashicons-screenoptions',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'menu_icon' => 'dashicons-screenoptions',
     ));
 }
 
-add_action( 'init', 'tj_decagon_customer_post_type' );
+add_action('init', 'tj_decagon_customer_post_type');
 
+//=============================
+// Bring in customizer actions
+//============================
 
-function tj_decagon_engineers_widget(){
-
-    register_sidebar(array(
-        'name' => 'Engineers widget Title',
-        'id' => 'engineers_widget_title',
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h4>',
-        'after_title' => '</h4>'
-    ));
-
-    register_sidebar(array(
-        'name' => 'Engineers widget Area',
-        'id' => 'engineers_widget',
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h6>',
-        'after_title' => '</h6>'
-    ));
-
-}
-add_action('widgets_init', 'tj_decagon_engineers_widget');
+require_once dirname( __FILE__ ).'/inc/customizer.php';
