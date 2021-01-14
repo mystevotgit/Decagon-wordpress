@@ -370,7 +370,7 @@ $ac5 = get_field('achievement5');
           $news = new WP_Query(array(
             'posts_per_page' => 3,
             'post_type' => 'post',
-            'orderby' => 'meta_value_num',
+            'orderby' => 'mete_value_num',
             'order' => 'ASC',
         ));
 
