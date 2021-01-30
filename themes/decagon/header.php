@@ -21,6 +21,9 @@
           $class = 'contact-header';
         }elseif(is_home() || is_category() ){
           $class = 'front-banner';
+        }elseif(is_singular()){
+          $class = 'singular-header';
+
         }
         else{
           $class = 'other-header';

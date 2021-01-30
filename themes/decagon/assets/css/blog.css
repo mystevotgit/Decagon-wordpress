@@ -143,7 +143,221 @@
   margin:  3rem auto 8rem auto;
   cursor: pointer;
 }
+.singular-header{
+    height: 11rem;
+    background: #000;
+    background-position: center;
+    background-size: cover;
+}
 
+
+.single-page-container {
+  margin: 3.5vw 5vw;
+  grid-template-rows: auto auto;
+  grid-template-areas: "page-body", "page-body2";
+  row-gap: 4vw;
+}
+
+.single-page-body {
+  display: block;
+  grid-area: page-body;
+  width: 100%;
+}
+
+.single-page-body2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  grid-area: page-body2;
+  width: 100%;
+  height: 397px;
+  background: #34A853;
+  padding: 20px 0px;
+  justify-content: space-between;
+}
+
+.subscribe-title {
+  display: block;
+  align-self: center;
+  margin: 0px 20px;
+}
+
+.subscribe-title h3 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 50px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.subscribe-title h4 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 21px;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+.single-page-body2 form {
+  margin: 0px 20px;
+}
+
+.single-page-body2 input {
+  display: block;
+  width: 100%;
+  height: 56px;
+  background: rgba(203, 203, 203, 0.2);
+  border: 1px solid #EDEDED;
+  box-sizing: border-box; 
+  padding: 20px 19px 6px 19px;
+}
+
+.single-page-body2 input::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.single-page-body2 label {
+  position: relative;
+  left: 20px;
+  top: 23px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
+
+.single-page-body2 .submitbtn {
+  margin-top: 20px;
+  background-color: white;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #34A853;
+  padding: 0px;
+}
+
+.single-page-body h6 a{
+  font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 16.32px;
+  text-align: left;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #000;
+}
+
+.single-page-body h1 {
+  width: 100%;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.single-page-body .author {
+  display: flex;
+  width: 100%;
+  margin-bottom: 35px;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.dp img {
+  display: inline;
+  border-radius: 50%;
+}
+
+.dp {
+  height: 39px;
+  width: 39px;
+  margin-right: 10px;
+}
+
+.author-details {
+  display: flex;
+  height: 39px;
+}
+
+.author-name h5{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+.author-name span {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 21px;
+  opacity: 0.5;
+}
+
+.single-page-body .addition {
+  width: 100%;
+  height: 294px;
+  background: #C4C4C4;
+}
+
+.single-page-body img {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.single-page-body p {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 31px;
+  opacity: 0.9;
+}
+
+.author-social {
+  display: flex;
+  height: 39px;
+}
+
+.author-social img {
+  width: 32px;
+  height: 32px;
+}
+
+.author-social div {
+  height: 32px;
+  align-self: center;
+}
+
+.author-social h5 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 21px;
+  margin-right: 15px;
+  align-self: center;
+}
+
+.single-page-body h3 {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 12px;
+}
 @media only screen and (min-device-width: 481px) and (max-device-width: 768px) {
   /* For portrait layouts only */
   .post-excerpt {
@@ -155,6 +369,13 @@
   .post {
     width: 45%;
   }
+   .single-page-container {
+    margin: 3.5vw 5vw;
+    grid-template-rows: auto auto;
+    grid-template-areas: "page-body", "page-body2";
+    row-gap: 4vw;
+  }
+
 }
 
 @media only screen and (min-width: 769px) {
@@ -202,5 +423,22 @@
 
   .dropdown {
     display: none;
+  }
+
+  .single-page-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: ". page-body page-body2";
+    column-gap: 4vw;
+  }
+
+  .single-page-body2 {
+    margin-top: 280px;
+  }
+  
+  .single-page-body h1 {
+    width: 80%;
+    font-size: 40px;
+    text-align: left;
   }
 }

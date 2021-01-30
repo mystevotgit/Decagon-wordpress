@@ -60,7 +60,15 @@
     <?php } ?>
         </section>
 
-        <div class="more-btn">Load More</div>
+        <?php
+        global $wp_query; // you can remove this line if everything works for you
+            
+        // don't display the button if there are not enough posts
+        if ($wp_query->max_num_pages > 1) {
+            echo '<div class="more-btn">Load More</div>';
+        }
+
+        ?>
 
     <?php wp_footer();?>
 
