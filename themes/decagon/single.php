@@ -13,7 +13,12 @@
                 <div class="author">
                     <div class="author-details">
                         <div class="dp">
-                            <img src="<?php echo get_template_directory_uri().'/images/faith.svg'?>" alt="Author-dp" />
+                            <?php if (get_avatar(get_the_author_meta('ID')) !== false){
+                             echo get_avatar(get_the_author_meta('ID'), 39); 
+                            }else{ ?>
+                            <img src="<?php echo get_template_directory_uri().'/images/faith.svg'?>" alt="<?php the_author() ?>" />
+                        <?php }?>
+                            
                         </div>
                         <div class="author-name">
                             <h5><?php the_author()?></h5>
