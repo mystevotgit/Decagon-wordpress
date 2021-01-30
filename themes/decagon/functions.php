@@ -12,6 +12,8 @@ function jb_decagon_scripts()
     wp_enqueue_style('bootstrap2', '//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
     wp_enqueue_style('google-font', '//fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
     wp_enqueue_style('decagon-assets', get_theme_file_uri('/assets/css/style.min.css'));
+    wp_enqueue_style('decagon-blog-assets', get_theme_file_uri('/assets/css/blog.css'));
+
 }
 
 add_action('wp_enqueue_scripts', 'jb_decagon_scripts');
@@ -37,6 +39,9 @@ function jb_decagon_nav_menu()
 {
     register_nav_menu('mainMenu', 'main Menu');
     register_nav_menu('footerMenu', 'footer Menu');
+    register_nav_menu('blogMenu', 'blog Menu');
+    add_theme_support('title-tag');
+
 }
 add_action('after_setup_theme', 'jb_decagon_nav_menu');
 
@@ -197,7 +202,6 @@ function tj_decagon_partners_post_type()
 
 add_action('init', 'tj_decagon_partners_post_type');
 
-
 function tj_decagon_customer_post_type()
 {
     register_post_type('customer', array(
@@ -224,8 +228,8 @@ function tj_decagon_customer_post_type()
 
 add_action('init', 'tj_decagon_customer_post_type');
 
-
-function tj_decagon_engineers_widget(){
+function tj_decagon_engineers_widget()
+{
 
     register_sidebar(array(
         'name' => 'Engineers widget Title',
@@ -233,7 +237,7 @@ function tj_decagon_engineers_widget(){
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h4>',
-        'after_title' => '</h4>'
+        'after_title' => '</h4>',
     ));
 
     register_sidebar(array(
@@ -242,7 +246,7 @@ function tj_decagon_engineers_widget(){
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h6>',
-        'after_title' => '</h6>'
+        'after_title' => '</h6>',
     ));
 
 }
@@ -252,4 +256,74 @@ add_action('widgets_init', 'tj_decagon_engineers_widget');
 // Bring in customizer actions
 //============================
 
-require_once dirname( __FILE__ ).'/inc/customizer.php';
+require_once dirname(__FILE__) . '/inc/customizer.php';
+
+//==========================
+// custom walker class for dropdown menu
+//===============================
+
+class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu
+{
+
+    // don't output children opening tag (`<ul>`)
+    public function start_lvl(&$output, $depth = 0, $args = null)
+    {}
+
+    // don't output children closing tag
+    public function end_lvl(&$output, $depth = 0, $args = null)
+    {}
+
+    public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+    {
+
+        // Here is where we create each option.
+        $item_output = '';
+
+// add spacing to the title based on the depth
+        $item->title = str_repeat("&amp;nbsp;", $depth * 4) . $item->title;
+
+// Get the attributes.. Though we likely don't need them for this...
+        $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
+        $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+        $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+        $attributes .= !empty($item->url) ? ' value="' . esc_attr($item->url) . '"' : '';
+
+// Add the html
+        $item_output .= '<option' . $attributes . '>';
+
+        $item_output .= apply_filters('the_title_attribute', $item->title);
+
+// Add this new item to the output string.
+        $output .= $item_output;
+
+    }
+
+// replace closing </li> with the closing option tag
+    public function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+
+        $output .= "</option>\n";
+
+
+    }
+
+}
+
+
+add_action('wp_footer', 'dropdown_menu_scripts');
+function dropdown_menu_scripts()
+{
+    ?>
+        <script>
+          jQuery(document).ready(function ($) {
+              if(localStorage.getItem("menu")){
+                  $("#categories option[value='" +localStorage.getItem("menu")+ "']").attr("selected", true);
+              }
+            $("#categories").change( function() {
+                localStorage.setItem('menu', $(this).val())
+                document.location.href =  $(this).val();
+            });
+          });
+        </script>
+    <?php
+}

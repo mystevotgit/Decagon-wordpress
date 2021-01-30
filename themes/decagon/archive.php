@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();?>
 
 
             <div class="page-title">
@@ -7,24 +7,24 @@
         </header>
         <div class="post-categories">
 
-             <?php
+                    <?php
 
-                wp_nav_menu(
-                    [
-                        'theme_location' => 'blogMenu',
-                        'menu_class' => 'categories',
-                        'container' => false,
+                        wp_nav_menu(
+                            [
+                                'theme_location' => 'blogMenu',
+                                'menu_class' => 'categories',
+                                'container' => false,
 
-                    ]
-                )
+                            ]
+                        )
 
-            ?>
+                        ?>
             <!-- -->
             <div class="dropdown">
-        
+
             <?php
-                        wp_nav_menu(array(
-                'theme_location' => 'blogMenu', // your theme location here
+            wp_nav_menu(array(
+                'theme_location' => 'blogMenu', 
                 'walker' => new Walker_Nav_Menu_Dropdown(),
                 'container' => false,
                 'items_wrap' => '<select id="categories">%3$s</select>',
@@ -59,19 +59,18 @@
             
     <?php } ?>
         </section>
-        
+
         <?php
         global $wp_query; // you can remove this line if everything works for you
-
+            
         // don't display the button if there are not enough posts
         if ($wp_query->max_num_pages > 1) {
             echo '<div class="more-btn">Load More</div>';
         }
-    
-        ?>
-        
 
-    <?php wp_footer(); ?>
+        ?>
+
+    <?php wp_footer();?>
 
 </body>
 

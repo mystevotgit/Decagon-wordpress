@@ -14,12 +14,18 @@
 
     $home_banner = get_theme_mod('decagon_banner_background_image');
     
-        if(is_home() && !is_page_template('contact-page.php')){
+        if(is_front_page() ){
           $class = 'home-header';
           $style = "background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(".$home_banner.")";
         }elseif (is_page_template('contact-page.php')) {
           $class = 'contact-header';
-        }else{
+        }elseif(is_home() || is_category() ){
+          $class = 'front-banner';
+        }elseif(is_singular()){
+          $class = 'singular-header';
+
+        }
+        else{
           $class = 'other-header';
         }
     ?>

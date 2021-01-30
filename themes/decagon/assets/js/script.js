@@ -13,7 +13,7 @@ window.onscroll = function () {
   }
 };
 
- $(document).ready(function () {
+ jQuery(document).ready(function ($) {
    $('#toggleLC').click(function (e) {
      e.preventDefault();
      $('.leader--card').toggleClass('hide__leader--card');
