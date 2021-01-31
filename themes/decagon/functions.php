@@ -327,3 +327,73 @@ function dropdown_menu_scripts()
         </script>
     <?php
 }
+
+//====================
+// Everything about the load more button starts here
+//Register and Enqueue 
+//Load more script
+//==================
+
+function jb_decagon_load_more_scripts()
+{
+
+    global $wp_query;
+
+    // In most cases it is already included on the page and this line can be removed
+    wp_enqueue_script('jquery');
+
+    // register our main script but do not enqueue it yet
+    wp_register_script('loadmore', get_stylesheet_directory_uri() . '/assets/js/loadmore.js', array('jquery'));
+
+
+    // you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
+    wp_localize_script('loadmore', 'jb_decagon_loadmore_params', array(
+        'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+        'posts' => json_encode($wp_query->query_vars), // everything about our loop is here
+        'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
+        'max_page' => $wp_query->max_num_pages,
+    ));
+
+    wp_enqueue_script('loadmore');
+}
+
+add_action('wp_enqueue_scripts', 'jb_decagon_load_more_scripts');
+
+
+function jb_decagon_loadmore_ajax_handler()
+{
+
+    // prepare our arguments for the query
+    $args = json_decode(stripslashes($_POST['query']), true);
+    $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+    $args['post_status'] = 'publish';
+
+   //run the query
+    query_posts($args);
+
+    if (have_posts()):
+
+        // run the loop
+        while (have_posts()): the_post();
+
+             ?>
+             <div class="post">
+                <div class="post-thumbnail">
+                    <img src="<?php the_post_thumbnail_url() ?>" alt="" />
+                </div>
+                <div class="post-cat"><?php echo get_the_category_list(', ') ?></div>
+                <div class="post-excerpt">
+                   <a href="<?php the_permalink()?>"> <?php the_title(); ?> </a>
+                </div>
+                
+            </div>
+
+      <?php  endwhile;
+
+    endif;
+    die; // here we exit the script and even no wp_reset_query() required!
+}
+
+add_action('wp_ajax_loadmore', 'jb_decagon_loadmore_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_loadmore', 'jb_decagon_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
+
