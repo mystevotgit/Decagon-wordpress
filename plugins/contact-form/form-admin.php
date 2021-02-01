@@ -32,7 +32,7 @@
                             
                             ?>
 								<tr>
-									<td class="column1">2017-09-29 01:22</td>
+									<td class="column1"><?php echo date('M d, Y',strtotime($message->time))?></td>
 									<td class="column2"><?php echo $message->name ?></td>
 									<td class="column3"><?php echo $message->role ?></td>
 									<td class="column4"><?php echo $message->company ?></td>

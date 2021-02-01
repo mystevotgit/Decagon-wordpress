@@ -34,6 +34,8 @@ function jb_contact_plugin_create_db()
         country VARCHAR(255) NOT NULL,
         need VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
+        time DATETIME NOT NULL
+                DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY  (id)
     )" . $charset_collate . ";";
 
