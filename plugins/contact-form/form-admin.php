@@ -16,10 +16,15 @@
 						<tbody>
                             <?php
                             global $wpdb;
-                            $table = $wpdb->prefix . 'contact_data';
+							$table = $wpdb->prefix . 'contact_data';
+							$total = $wpdb->get_var("SELECT COUNT(*) FROM $table");
+							$items_per_page = 2;
+							$page = isset($_GET['cpage']) ? abs((int) $_GET['cpage']) : 1;
+							$offset = ($page * $items_per_page) - $items_per_page;
+
                               $messages =  $wpdb->get_results(
                                   "SELECT * FROM $table 
-                                  ORDER BY id DESC
+                                  ORDER BY id DESC LIMIT ${offset}, ${items_per_page}
                                   "
                               );
                             
@@ -40,6 +45,18 @@
 						</tbody>
 					</table>
 				</div>
+									<div class="pagination">
+								<?php
+echo paginate_links(array(
+    'base' => add_query_arg('cpage', '%#%'),
+    'format' => '',
+    'prev_text' => __('&laquo;'),
+    'next_text' => __('&raquo;'),
+    'total' => ceil($total / $items_per_page),
+    'current' => $page,
+));
+?>
+		</div>
 			</div>
 		</div>
 	</div>
