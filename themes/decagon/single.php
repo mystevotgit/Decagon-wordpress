@@ -28,13 +28,13 @@
                     <div class="author-social">
                         <h5>share</h5>
                         <div>
-                            <img src="<?php echo get_template_directory_uri() . '/images/tweeter.svg' ?>" alt="tweeter">
-                            <img src="<?php echo get_template_directory_uri() . '/images/facebook.svg' ?>" alt="facebook">
-                            <img src="<?php echo get_template_directory_uri() . '/images/linkdin.svg' ?>" alt="linkedin">
+                            <a target='_blank' href='https://twitter.com/share?url=<?php the_permalink() ?>'><img src="<?php echo get_template_directory_uri() . '/assets/img/tweeter.svg' ?>" alt="tweeter"></a>
+                            <a target='_blank' href='http://www.facebook.com/sharer.php?u=<?php the_permalink()?>'><img src="<?php echo get_template_directory_uri() . '/assets/img/facebook.svg' ?>" alt="facebook"></a>
+                            <a target='_blank' href='http://www.linkedin.com/shareArticle?url=<?php the_permalink()?>'><img src="<?php echo get_template_directory_uri() . '/assets/img/linkdin.svg' ?>" alt="linkedin"></a>
                         </div>
                     </div>
                 </div>
-                <img src="<?php the_post_thumbnail_url();?>" alt="Remote Devs">
+                <img src="<?php the_post_thumbnail_url();?>" alt="<?php the_title(); ?>">
                 <?php the_content() ?>
                 
                 <div class="addition"></div>
