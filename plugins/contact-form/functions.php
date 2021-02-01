@@ -2,6 +2,17 @@
 
 function jb_contact_form_dashboard_css(){
     wp_enqueue_style('main', plugin_dir_url(__FILE__).'assets/css/main.css', null, '1.0', false);
+    //wp_enqueue_script('mainjs', plugin_dir_url(__FILE__) . 'assets/js/main.js', null, '1.0', true);
+
+    wp_register_script('mainjs', plugin_dir_url(__FILE__) . 'assets/js/main.js');
+
+wp_localize_script('mainjs', 'jb_decagon_contact_params', array(
+    'ajaxurl' => plugin_dir_url(__FILE__) . 'delete.php', // WordPress AJAX
+
+));
+
+wp_enqueue_script('mainjs', null, '1.0', true);
+
     
 }
 
@@ -103,3 +114,5 @@ add_action('admin_menu', 'jb_add_contact_plugin_menu');
 function jb_contact_main_menu(){
     require_once 'form-admin.php';
 }
+
+

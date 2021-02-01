@@ -20,6 +20,7 @@
 require_once __DIR__ . '/functions.php';
 
 
+
 function jb_contact_form(){
 $content .= 
 '<section class="contact-section">

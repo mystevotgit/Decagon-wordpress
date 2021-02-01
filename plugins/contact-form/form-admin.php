@@ -37,7 +37,7 @@
 									<td class="column3"><?php echo $message->role ?></td>
 									<td class="column4"><?php echo $message->company ?></td>
 									<td class="column4"><?php echo $message->email ?></td>
-									<td class="column6">Delete</td>
+									<td class="column6" id="<?php echo $message->id ?>">Delete</td>
 								</tr>
 							
 							<?php } ?>
@@ -45,17 +45,17 @@
 						</tbody>
 					</table>
 				</div>
-									<div class="pagination">
-								<?php
-echo paginate_links(array(
-    'base' => add_query_arg('cpage', '%#%'),
-    'format' => '',
-    'prev_text' => __('&laquo;'),
-    'next_text' => __('&raquo;'),
-    'total' => ceil($total / $items_per_page),
-    'current' => $page,
-));
-?>
+				<div class="pagination">
+						<?php
+							echo paginate_links(array(
+								'base' => add_query_arg('cpage', '%#%'),
+								'format' => '',
+								'prev_text' => __('&laquo;'),
+								'next_text' => __('&raquo;'),
+								'total' => ceil($total / $items_per_page),
+								'current' => $page,
+							));
+						?>
 		</div>
 			</div>
 		</div>
